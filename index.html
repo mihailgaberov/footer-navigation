@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>test</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <style>
+      @keyframes rightArrowStart {
+        0% {
+          transform: translateX(-50px);
+        }
+
+        100% {
+          transform: translateX(42px);
+        }
+      }
+
+      @keyframes rightArrowEnd {
+        0% {
+          transform: translateX(42px);
+        }
+
+        100% {
+          transform: translateX(75px);
+        }
+      }
+
+      @keyframes rightArrowStart2 {
+        0% {
+          transform: translateX(50px) rotate(180deg);
+        }
+
+        100% {
+          transform: translateX(-42px) rotate(180deg);
+        }
+      }
+
+      @keyframes rightArrowEnd2 {
+        0% {
+          transform: translateX(-42px) rotate(180deg);
+        }
+
+        100% {
+          transform: translateX(-75px) rotate(180deg);
+        }
+      }
+
+      @keyframes rightLineEnd {
+        0% {
+          transform: translateY(-50%) translateX(0) scaleX(1);
+        }
+
+        100% {
+          transform: translateY(-50%) translateX(28px) scaleX(0);
+        }
+      }
+
+      @keyframes rightLineStart2 {
+        0% {
+          transform: translateY(-50%) translateX(88px) scaleX(0);
+        }
+
+        100% {
+          transform: translateY(-50%) translateX(0) scaleX(1);
+        }
+      }
+
+      @keyframes rightLineEnd2 {
+        0% {
+          transform: translateY(-50%) translateX(0) scaleX(1);
+        }
+
+        100% {
+          transform: translateY(-50%) translateX(-28px) scaleX(0);
+        }
+      }
+
+      @keyframes rightArrowLineStart {
+        0% {
+          stroke-dashoffset: 30px;
+        }
+
+        100% {
+          stroke-dashoffset: 40px;
+        }
+      }
+
+      @keyframes rightArrowLineEnd {
+        0% {
+          stroke-dashoffset: 40px;
+        }
+
+        100% {
+          stroke-dashoffset: 50px;
+        }
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+      }
+      .previous-post,
+      .next-post {
+        min-height: 225px !important;
+        width: 50%;
+        line-height: 0;
+        height: auto !important;
+        /* padding: 6% 9%; */
+        min-height: 300px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        float: none !important;
+        overflow: hidden;
+        position: relative;
+        background-color: #333;
+      }
+      .previous-post:after,
+      .next-post:after {
+        background-color: rgba(13, 13, 13, 0.35);
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: "";
+        display: block;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        transition: background-color 0.4s cubic-bezier(0.05, 0.2, 0.1, 1) 0s;
+      }
+
+      .post-bg-img {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        transition: transform 0.4s cubic-bezier(0.05, 0.2, 0.1, 1) 0s;
+      }
+
+      h3 {
+        color: #fff;
+        position: relative;
+        z-index: 100;
+        display: inline-block;
+        transform: translateX(0) translateZ(0);
+        transition: transform 0.4s cubic-bezier(0.05, 0.2, 0.1, 1);
+      }
+
+      .next-post.mouse-leaving h3 .text .line {
+        animation: rightLineEnd 0.4s cubic-bezier(0.05, 0.2, 0.1, 1) forwards;
+      }
+
+      .previous-post.mouse-leaving h3 .text .line {
+        animation: rightLineEnd2 0.4s cubic-bezier(0.05, 0.2, 0.1, 1) forwards;
+      }
+
+      .mouse-leaving h3 .next-arrow,
+      .previous-post.mouse-leaving h3 .next-arrow {
+        animation: rightArrowEnd2 0.7s cubic-bezier(0, 0.2, 0.1, 1) forwards;
+      }
+
+      .mouse-leaving h3 .next-arrow,
+      .next-post.mouse-leaving h3 .next-arrow {
+        animation: rightArrowEnd 0.7s cubic-bezier(0, 0.2, 0.1, 1) forwards;
+      }
+      .previous-project h3 .next-arrow,
+      .previous-post h3 .next-arrow {
+        transform: translateX(38px) rotate(180deg);
+        left: -43px;
+        right: auto;
+      }
+
+      .next-post:hover h3 .next-arrow {
+        animation: rightArrowStart 0.4s cubic-bezier(0.05, 0.2, 0.1, 1) forwards;
+      }
+
+      .previous-post:hover h3 .next-arrow {
+        animation: rightArrowStart2 0.4s cubic-bezier(0.05, 0.2, 0.1, 1)
+          forwards;
+      }
+
+      .previous-project:hover h3 .next-arrow,
+      .previous-post:hover h3 .next-arrow,
+      .next-post:hover h3 .next-arrow {
+        transform: translateX(42px);
+      }
+
+      .previous-post h3 .next-arrow line,
+      .next-post h3 .next-arrow line {
+        stroke-width: 2px;
+        stroke-dasharray: 10px;
+        stroke-dashoffset: 30px;
+      }
+
+      .previous-post h3 .next-arrow line,
+      .next-post h3 .next-arrow line {
+        stroke: #fff;
+      }
+
+      li:hover .post-bg-img {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+
+      .previous-project:hover:after,
+      ul .previous-post:hover:after,
+      ul .next-post:hover:after {
+        background-color: rgba(13, 13, 13, 0.9);
+      }
+
+      .controls li a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 101;
+        display: block;
+      }
+
+      .next-post:hover h3 {
+        transform: translateX(-40px) translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      .previous-post:hover h3 {
+        transform: translateX(40px) translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      .next-post.mouse-leaving h3 .text .line {
+        animation: rightLineEnd 0.4s cubic-bezier(0.05, 0.2, 0.1, 1) forwards;
+      }
+
+      .previous-post.mouse-leaving h3 .text .line {
+        animation: rightLineEnd2 0.4s cubic-bezier(0.05, 0.2, 0.1, 1) forwards;
+      }
+
+      .next-post:hover h3 .text .line {
+        transform: translateY(-50%) translateX(0) scaleX(1);
+        transform-origin: left;
+        animation: rightLineStart 0.4s cubic-bezier(0.05, 0.2, 0.1, 1) forwards;
+      }
+
+      .previous-post:hover h3 .text .line {
+        transform: translateY(-50%) translateX(0) scaleX(1);
+        transform-origin: right;
+        animation: rightLineStart2 0.4s cubic-bezier(0.05, 0.2, 0.1, 1) forwards;
+      }
+
+      h3 span {
+        color: #fff;
+        text-align: center !important;
+        line-height: 26.4px;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body style="left: 0px; width: 1903px; visibility: visible">
+    <ul class="controls">
+      <li class="previous-post mouse-leaving">
+        <div
+          class="post-bg-img"
+          style="
+            background-image: url(https://www.objectrocket.com/wp-content/uploads/Redis-Sentinel-Blog-pichi.png);
+          "
+        ></div>
+        <a
+          href="https://www.objectrocket.com/blog/how-to/introduction-to-redis-sentinel/"
+        ></a>
+        <h3>
+          <span>Previous Post</span
+          ><span class="text"
+            >Introduction to Redis Sentinel
+            <svg
+              class="next-arrow"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 39 12"
+            >
+              <line
+                class="top"
+                x1="23"
+                y1="-0.5"
+                x2="29.5"
+                y2="6.5"
+                stroke="#ffffff;"
+              ></line>
+              <line
+                class="bottom"
+                x1="23"
+                y1="12.5"
+                x2="29.5"
+                y2="5.5"
+                stroke="#ffffff;"
+              ></line></svg
+            ><span class="line"></span
+          ></span>
+        </h3>
+      </li>
+      <li class="next-post mouse-leaving">
+        <div
+          class="post-bg-img"
+          style="
+            background-image: url(https://www.objectrocket.com/wp-content/uploads/TOp-10-Redis-Commands-pichi.png);
+          "
+        ></div>
+        <a
+          href="https://www.objectrocket.com/blog/how-to/top-10-redis-cli-commands/"
+        ></a>
+        <h3>
+          <span>Next Post</span
+          ><span class="text"
+            >Top 10 Redis CLI commands
+            <svg
+              class="next-arrow"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 39 12"
+            >
+              <line
+                class="top"
+                x1="23"
+                y1="-0.5"
+                x2="29.5"
+                y2="6.5"
+                stroke="#ffffff;"
+              ></line>
+              <line
+                class="bottom"
+                x1="23"
+                y1="12.5"
+                x2="29.5"
+                y2="5.5"
+                stroke="#ffffff;"
+              ></line></svg
+            ><span class="line"></span
+          ></span>
+        </h3>
+      </li>
+    </ul>
+  </body>
+</html>
