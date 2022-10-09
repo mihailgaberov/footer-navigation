@@ -192,16 +192,14 @@
         animation: rightLineEnd2 0.4s cubic-bezier(0.05, 0.2, 0.1, 1) forwards;
       }
 
-      .mouse-leaving h3 .next-arrow,
       .previous-post.mouse-leaving h3 .next-arrow {
         animation: rightArrowEnd2 0.7s cubic-bezier(0, 0.2, 0.1, 1) forwards;
       }
 
-      .mouse-leaving h3 .next-arrow,
       .next-post.mouse-leaving h3 .next-arrow {
         animation: rightArrowEnd 0.7s cubic-bezier(0, 0.2, 0.1, 1) forwards;
       }
-      .previous-project h3 .next-arrow,
+
       .previous-post h3 .next-arrow {
         transform: translateX(38px) rotate(180deg);
         left: -43px;
@@ -217,7 +215,6 @@
           forwards;
       }
 
-      .previous-project:hover h3 .next-arrow,
       .previous-post:hover h3 .next-arrow,
       .next-post:hover h3 .next-arrow {
         transform: translateX(42px);
@@ -240,7 +237,6 @@
         transform: scale(1.1);
       }
 
-      .previous-project:hover:after,
       ul .previous-post:hover:after,
       ul .next-post:hover:after {
         background-color: rgba(13, 13, 13, 0.9);
@@ -376,8 +372,8 @@
         stroke: #fff;
       }
 
-      .previous-post.mouse-leaving h3 .next-arrow line,
-      .next-post.mouse-leaving h3 .next-arrow line {
+      .previous-post .mouse-leaving h3 .next-arrow line,
+      .next-post .mouse-leaving h3 .next-arrow line {
         animation: rightArrowLineEnd 0.4s cubic-bezier(0.3, 0.2, 0.1, 1) 0.25s
           forwards;
         stroke-dashoffset: 40px;
@@ -388,6 +384,14 @@
         animation: rightArrowLineStart 0.3s cubic-bezier(0.05, 0.2, 0.1, 1) 0.1s
           forwards;
         stroke-dashoffset: 30px;
+      }
+
+      .previous-post:hover h3 .next-arrow {
+        animation: rightArrowStart2 0.4s cubic-bezier(0.05, 0.2, 0.1, 1)
+          forwards;
+      }
+      .next-post:hover h3 .next-arrow {
+        transform: translateX(42px);
       }
     </style>
   </head>
