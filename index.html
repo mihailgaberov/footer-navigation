@@ -158,6 +158,10 @@
         display: inline-block;
         transform: translateX(0) translateZ(0);
         transition: transform 0.4s cubic-bezier(0.05, 0.2, 0.1, 1);
+        margin: 0;
+        transition: all 0.45s cubic-bezier(0.15, 0.75, 0.5, 1) 0s;
+        line-height: 1.2em;
+        max-width: 70%;
       }
 
       .next-post.mouse-leaving h3 .text .line {
@@ -264,9 +268,15 @@
 
       h3 span {
         color: #fff;
-        text-align: center !important;
+        display: block;
         line-height: 26.4px;
         margin-bottom: 5px;
+      }
+      .next-post h3 span {
+        text-align: left;
+      }
+      .previous-post h3 span {
+        text-align: right;
       }
     </style>
   </head>
