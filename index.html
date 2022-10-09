@@ -101,6 +101,26 @@
         }
       }
 
+      @keyframes portRightLineStart {
+        0% {
+          transform: translateY(-50%) translateX(-25px) scaleX(0);
+        }
+
+        100% {
+          transform: translateY(-50%) translateX(0) scaleX(1);
+        }
+      }
+
+      @keyframes rightLineStart {
+        0% {
+          transform: translateY(-50%) translateX(-88px) scaleX(0);
+        }
+
+        100% {
+          transform: translateY(-50%) translateX(0) scaleX(1);
+        }
+      }
+
       .controls {
         display: flex;
         flex-wrap: wrap;
@@ -277,6 +297,97 @@
       }
       .previous-post h3 span {
         text-align: right;
+      }
+
+      h3 .text .line {
+        height: 2px;
+        width: 45px;
+        background-color: #fff;
+        position: absolute;
+        content: "";
+        right: -74px;
+        display: block;
+        backface-visibility: hidden;
+        top: 50%;
+        -webkit-transform: translateY(-50%) translateX(28px) scaleX(0);
+        -webkit-transform-origin: right;
+        transform: translateY(-50%) translateX(28px) scaleX(0);
+        transform-origin: right;
+      }
+
+      .previous-post h3 .text .line {
+        -webkit-transform: translateY(-50%) translateX(-28px) scaleX(0);
+        -webkit-transform-origin: left;
+        transform: translateY(-50%) translateX(-28px) scaleX(0);
+        transform-origin: left;
+        left: -74px;
+        right: auto;
+      }
+
+      h3 .next-arrow {
+        position: absolute;
+        backface-visibility: hidden;
+        right: -43px;
+        top: 50%;
+        margin-top: -15px;
+        height: 30px;
+        width: 40px;
+        display: block;
+        transform: translateX(38px);
+      }
+
+      .previous-post.mouse-leaving h3 .next-arrow {
+        animation: rightArrowEnd2 0.7s cubic-bezier(0, 0.2, 0.1, 1) forwards;
+      }
+
+      h3 .next-arrow {
+        animation: rightArrowEnd 0.7s cubic-bezier(0, 0.2, 0.1, 1) forwards;
+      }
+
+      .previous-post h3 .next-arrow {
+        transform: translateX(38px) rotate(180deg);
+        left: -43px;
+        right: auto;
+      }
+
+      .next-post:hover h3 .next-arrow {
+        animation: rightArrowStart 0.4s cubic-bezier(0.05, 0.2, 0.1, 1) forwards;
+      }
+
+      .previous-post:hover h3 .next-arrow {
+        animation: rightArrowStart2 0.4s cubic-bezier(0.05, 0.2, 0.1, 1)
+          forwards;
+      }
+
+      .previous-post:hover h3 .next-arrow,
+      .next-post:hover h3 .next-arrow {
+        transform: translateX(42px);
+      }
+
+      .previous-post h3 .next-arrow line,
+      .next-post h3 .next-arrow line {
+        stroke-width: 2px;
+        stroke-dasharray: 10px;
+        stroke-dashoffset: 30px;
+      }
+
+      .previous-post h3 .next-arrow line,
+      .next-post h3 .next-arrow line {
+        stroke: #fff;
+      }
+
+      .previous-post.mouse-leaving h3 .next-arrow line,
+      .next-post.mouse-leaving h3 .next-arrow line {
+        animation: rightArrowLineEnd 0.4s cubic-bezier(0.3, 0.2, 0.1, 1) 0.25s
+          forwards;
+        stroke-dashoffset: 40px;
+      }
+
+      .previous-post:hover .next-arrow line,
+      .next-post:hover .next-arrow line {
+        animation: rightArrowLineStart 0.3s cubic-bezier(0.05, 0.2, 0.1, 1) 0.1s
+          forwards;
+        stroke-dashoffset: 30px;
       }
     </style>
   </head>
