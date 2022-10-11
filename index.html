@@ -332,7 +332,7 @@
         transform: translateX(38px);
       }
 
-      .previous-post.mouse-leaving h3 .next-arrow {
+      .previous-post .mouse-leaving h3 .next-arrow {
         animation: rightArrowEnd2 0.7s cubic-bezier(0, 0.2, 0.1, 1) forwards;
       }
 
@@ -372,8 +372,8 @@
         stroke: #fff;
       }
 
-      .previous-post .mouse-leaving h3 .next-arrow line,
-      .next-post .mouse-leaving h3 .next-arrow line {
+      .previous-post .mouse-leaving h3 .text > .next-arrow > line,
+      .next-post .mouse-leaving h3 .text .next-arrow line {
         animation: rightArrowLineEnd 0.4s cubic-bezier(0.3, 0.2, 0.1, 1) 0.25s
           forwards;
         stroke-dashoffset: 40px;
@@ -448,8 +448,8 @@
           href="https://www.objectrocket.com/blog/how-to/top-10-redis-cli-commands/"
         ></a>
         <h3>
-          <span>Next Post</span
-          ><span class="text"
+          <span>Next Post</span>
+          <span class="text"
             >Top 10 Redis CLI commands
             <svg
               class="next-arrow"
